@@ -1,0 +1,7 @@
+spring:
+  application:
+    name: learning
+  profiles:
+    active: dev
+
+

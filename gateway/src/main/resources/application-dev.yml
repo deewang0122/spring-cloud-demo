@@ -1,0 +1,36 @@
+server:
+  port: 8030
+spring:
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+        namespace: 78138ea2-359c-4a0b-bc62-c6b65f1d3f9d
+        group: DEV_GROUP
+      config:
+        server-addr: 127.0.0.1:8848
+        file-extension: yaml
+        prefix: ${spring.application.name}-${spring.profiles.active}
+        namespace: 78138ea2-359c-4a0b-bc62-c6b65f1d3f9d
+        group: DEV_GROUP
+    # 网关的配置
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+          lower-case-service-id: true
+      routes:
+        - id: system
+          uri: lb://system
+          predicates:
+            - Path=/system/**
+      default-filters:
+        - AddRequestHeader=gateway-env, springcloud-gateway
+  config:
+    import: optional:nacos:${spring.application.name}-${spring.profiles.active}.${spring.cloud.nacos.config.file-extension}
+
+logging:
+  level:
+    org.springframework.cloud.gateway: debug
+    reactor.netty.http.client: debug
+
