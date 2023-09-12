@@ -1,5 +1,6 @@
 server:
   port: 8030
+
 spring:
   cloud:
     nacos:
@@ -24,10 +25,21 @@ spring:
           uri: lb://system
           predicates:
             - Path=/system/**
-      default-filters:
-        - AddRequestHeader=gateway-env, springcloud-gateway
+        - id: learning
+          uri: lb://learning
+          predicates:
+            - Path=/learning/**
+  #      default-filters:
+#        - AddRequestHeader=gateway-system, gateway-system
+
   config:
     import: optional:nacos:${spring.application.name}-${spring.profiles.active}.${spring.cloud.nacos.config.file-extension}
+  data:
+    redis:
+      port: 6379
+      host: 127.0.0.1
+      timeout: 3000
+      password: 123456
 
 logging:
   level:
