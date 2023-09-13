@@ -1,6 +1,6 @@
 package com.dee.system.service.impl;
 
-import com.dee.basekit.config.BaseRedisManager;
+import com.dee.basekit.config.GlobalRedisManager;
 import com.dee.basekit.mvc.domain.UserToken;
 import com.dee.basekit.mvc.param.Result;
 import com.dee.system.domain.Account;
@@ -33,7 +33,7 @@ public class AccountServiceImpl extends BaseGlobalServiceImpl<Account> implement
             return Result.fail("password is error");
         }
         String token = doToken(account.getUser());
-        BaseRedisManager.set(token, doUserToken(account.getUser()));
+        GlobalRedisManager.set(token, doUserToken(account.getUser()));
 
         LoginResult loginResult = new LoginResult();
         loginResult.setToken(token);

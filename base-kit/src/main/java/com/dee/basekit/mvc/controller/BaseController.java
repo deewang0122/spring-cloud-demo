@@ -1,6 +1,6 @@
 package com.dee.basekit.mvc.controller;
 
-import com.dee.basekit.config.BaseRedisManager;
+import com.dee.basekit.config.GlobalRedisManager;
 import com.dee.basekit.mvc.domain.UserToken;
 import com.dee.basekit.util.SessionUtils;
 // TODO...2023/9/11: 待优化
@@ -15,7 +15,7 @@ public abstract class BaseController {
     }
 
     protected static UserToken getUserToken() {
-        Object obj = BaseRedisManager.get(SessionUtils.getRequest().getHeader(AUTHORIZATION));
+        Object obj = GlobalRedisManager.get(SessionUtils.getRequest().getHeader(AUTHORIZATION));
         return (UserToken) obj;
     }
 }

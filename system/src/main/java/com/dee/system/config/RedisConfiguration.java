@@ -1,4 +1,4 @@
-package com.dee.gateway.config;
+package com.dee.system.config;
 
 import com.dee.basekit.config.AbstractRedisConfiguration;
 import com.dee.basekit.config.GlobalRedisManager;

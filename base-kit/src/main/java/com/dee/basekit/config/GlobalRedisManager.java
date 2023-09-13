@@ -1,14 +1,16 @@
 package com.dee.basekit.config;
 
 import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.data.redis.core.StringRedisTemplate;
 
 // TODO...2023/9/11: 待优化
-public class BaseRedisManager {
+public class GlobalRedisManager {
 
-    private static RedisTemplate<String, Object> redisTemplate;
+    private  static RedisTemplate<String, Object> redisTemplate;
 
-    private static StringRedisTemplate stringRedisTemplate;
+    public static RedisTemplate<String, Object> init(RedisTemplate<String, Object> objectRedisTemplate) {
+        redisTemplate = objectRedisTemplate;
+        return redisTemplate;
+    }
 
     public static Object get(String key) {
         return redisTemplate.opsForValue().get(key);
@@ -26,5 +28,9 @@ public class BaseRedisManager {
         redisTemplate.opsForValue().set(key, value, expireTime);
 
         return true;
+    }
+
+    public static Boolean hasKey(String key) {
+        return redisTemplate.hasKey(key);
     }
 }

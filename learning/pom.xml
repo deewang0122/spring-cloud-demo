@@ -8,7 +8,6 @@
 		<version>0.0.1-SNAPSHOT</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.dee</groupId>
 	<artifactId>learning</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>learning</name>
