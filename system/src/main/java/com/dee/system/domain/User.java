@@ -3,8 +3,10 @@ package com.dee.system.domain;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
+@EqualsAndHashCode(callSuper = true) //生成equals/hashCode方法时包含其父类的属性
 @Data
 @Entity
 @Table(name = "system_user")

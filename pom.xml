@@ -23,6 +23,7 @@
     </properties>
 
     <modules>
+        <module>base-kit</module>
         <module>system</module>
         <module>gateway</module>
         <module>learning</module>
@@ -55,7 +56,6 @@
             <artifactId>base-kit</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
-
         <!--服务注册与发现-->
         <dependency>
             <groupId>com.alibaba.cloud</groupId>
@@ -100,17 +100,7 @@
         </dependency>
 
 
-        <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-core</artifactId>
-            <version>2.15.2</version>
-        </dependency>
-        <!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind -->
-        <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-databind</artifactId>
-            <version>2.15.2</version>
-        </dependency>
+
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
