@@ -9,9 +9,6 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping(value = "demo")
 public class TestController {
 
-
-
-
     @GetMapping("/test")
     public Result<String> test(String name) {
         return Result.success("test 地址 : " + name);

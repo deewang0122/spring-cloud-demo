@@ -1,5 +1,8 @@
 package com.dee.basekit.mvc.param;
 
+import lombok.Data;
+
+@Data
 public class Result<T> {
     private static final Integer SUCCESS_CODE = 1;
     private static final Integer FAIL_CODE = 0;
@@ -31,27 +34,4 @@ public class Result<T> {
         this.data = data;
     }
 
-    public void setCode(Integer code) {
-        this.code = code;
-    }
-
-    public Integer getCode() {
-        return code;
-    }
-
-    public void setMessage(String message) {
-        this.message = message;
-    }
-
-    public String getMessage() {
-        return message;
-    }
-
-    public void setData(T data) {
-        this.data = data;
-    }
-
-    public T getData() {
-        return data;
-    }
 }

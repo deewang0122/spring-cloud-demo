@@ -1,5 +1,8 @@
 package com.dee.basekit.mvc.login;
 
+import lombok.Data;
+
+@Data
 public abstract class BaseLoginParam {
     /**
      * 登录账号
@@ -10,19 +13,4 @@ public abstract class BaseLoginParam {
      */
     private String password;
 
-    public void setAccount(String account) {
-        this.account = account;
-    }
-
-    public String getAccount() {
-        return account;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getPassword() {
-        return password;
-    }
 }
