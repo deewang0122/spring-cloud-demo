@@ -8,7 +8,7 @@ import jakarta.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 @Service
-public class UserServiceImpl extends BaseGlobalServiceImpl<User> implements IUserService {
+public class UserServiceImpl extends BaseGlobalServiceImpl<User> implements IUserService<User> {
 
     @Resource
     private UserRepository userRepository;

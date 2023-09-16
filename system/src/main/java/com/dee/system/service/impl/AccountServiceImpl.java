@@ -15,7 +15,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.ObjectUtils;
 // TODO...2023/9/11: 待优化
 @Service
-public class AccountServiceImpl extends BaseGlobalServiceImpl<Account> implements IAccountService {
+public class AccountServiceImpl extends BaseGlobalServiceImpl<Account> implements IAccountService<Account> {
     @Resource
     private AccountRepository accountRepository;
 

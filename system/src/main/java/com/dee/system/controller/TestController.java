@@ -15,7 +15,7 @@ public class TestController {
     @GetMapping("/test")
     public Result test(String name) {
 
-        GlobalRedisManager.set("testKey", "testValue");
+        GlobalRedisManager.set("testKey", "testValue" + System.currentTimeMillis());
         String value = GlobalRedisManager.get("testKey").toString();
         return Result.success("test 地址 : " + name + "testKey = " + value);
 

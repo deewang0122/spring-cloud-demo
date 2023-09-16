@@ -1,5 +1,6 @@
 package com.dee.system.domain;
 
+import com.dee.system.global.BaseGlobalDomain;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -13,9 +14,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class User extends BaseGlobalDomain {
-    @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
-    private String id;
 
     private String name;
 
@@ -25,7 +23,6 @@ public class User extends BaseGlobalDomain {
 
     private String email;
 
-    User(String id) {
-        this.id = id;
-    }
+    private Integer status;
+
 }
