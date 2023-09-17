@@ -17,12 +17,14 @@ public class User extends BaseGlobalDomain {
 
     private String name;
 
-    private String password;
-
     private String code;
+
+    private String password;
 
     private String email;
 
     private Integer status;
+
+    private String remark;
 
 }

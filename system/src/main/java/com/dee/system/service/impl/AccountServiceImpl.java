@@ -3,6 +3,7 @@ package com.dee.system.service.impl;
 import com.dee.basekit.config.GlobalRedisManager;
 import com.dee.basekit.mvc.domain.UserToken;
 import com.dee.basekit.mvc.param.Result;
+import com.dee.basekit.util.BcryptUtils;
 import com.dee.system.domain.Account;
 import com.dee.system.domain.User;
 import com.dee.system.global.BaseGlobalServiceImpl;
@@ -13,6 +14,9 @@ import com.dee.system.service.IAccountService;
 import jakarta.annotation.Resource;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ObjectUtils;
+
+import static com.dee.basekit.constant.Constants.EXPIRE_TIME;
+
 // TODO...2023/9/11: 待优化
 @Service
 public class AccountServiceImpl extends BaseGlobalServiceImpl<Account> implements IAccountService<Account> {
@@ -33,7 +37,7 @@ public class AccountServiceImpl extends BaseGlobalServiceImpl<Account> implement
             return Result.fail("password is error");
         }
         String token = doToken(account.getUser());
-        GlobalRedisManager.set(token, doUserToken(account.getUser()));
+        GlobalRedisManager.setAndExpire(token, doUserToken(account.getUser()), EXPIRE_TIME);
 
         LoginResult loginResult = new LoginResult();
         loginResult.setToken(token);
@@ -48,7 +52,7 @@ public class AccountServiceImpl extends BaseGlobalServiceImpl<Account> implement
     }
 
     private String doToken(User user) {
-        return user.getId() + user.getName();
+        return BcryptUtils.encode(user.getId() + user.getName());
     }
 
     @Override

@@ -1,8 +1,12 @@
 package com.dee.basekit.mvc.param;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 @Data
+@ToString
+@NoArgsConstructor
 public class Result<T> {
     private static final Integer SUCCESS_CODE = 1;
     private static final Integer FAIL_CODE = 0;

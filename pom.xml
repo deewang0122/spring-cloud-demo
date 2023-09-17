@@ -51,11 +51,7 @@
         </dependencies>
     </dependencyManagement>
     <dependencies>
-        <dependency>
-            <groupId>com.dee</groupId>
-            <artifactId>base-kit</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-        </dependency>
+
         <!--服务注册与发现-->
         <dependency>
             <groupId>com.alibaba.cloud</groupId>
