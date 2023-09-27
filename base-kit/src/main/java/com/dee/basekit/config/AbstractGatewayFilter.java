@@ -36,12 +36,17 @@ public abstract class AbstractGatewayFilter extends AbstractFilter implements Gl
             return exchange.getResponse().setComplete();
         }
         // 4. 刷新token
-        GlobalRedisManager.expire(authorization, getExpireTime());
+        refreshToken(authorization);
 
         return chain.filter(exchange);
     }
 
+    private void refreshToken(String authorization) {
+        GlobalRedisManager.expire(authorization, getExpireTime());
+    }
+
     private boolean verifyToken(String authorization) {
+        val object = GlobalRedisManager.get(authorization);
         UserToken userToken = CastUtils.cast(GlobalRedisManager.get(authorization));
         return BcryptUtils.matches(userToken.getUserId() + userToken.getUserName(), authorization);
     }

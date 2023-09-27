@@ -1,16 +1,22 @@
 package com.dee.system.service;
 
-import com.dee.system.domain.User;
 import com.dee.system.global.BaseGlobalDomain;
 import com.dee.system.param.UserEditParam;
+import com.dee.system.param.UserResult;
 import com.dee.system.param.UserSaveParam;
 
+import java.util.List;
+
 public interface IUserService<T extends BaseGlobalDomain> {
-    User findById(String id);
+    UserResult findById(String id);
 
-    User save(UserSaveParam param);
+    UserResult save(UserSaveParam param);
 
-    User edit(UserEditParam param);
+    UserResult edit(UserEditParam param);
 
-    User delete(String id);
+    boolean delete(String id);
+
+    List<UserResult> findAll();
+
+
 }

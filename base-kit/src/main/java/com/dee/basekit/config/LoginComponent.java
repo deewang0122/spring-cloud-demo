@@ -2,9 +2,7 @@ package com.dee.basekit.config;
 
 import com.dee.basekit.constant.Constants;
 import com.dee.basekit.mvc.domain.UserToken;
-import com.dee.basekit.util.SessionUtils;
-
-import java.util.Objects;
+import org.springframework.data.util.CastUtils;
 
 /**
  * 登录组件：登录用户信息
@@ -19,7 +17,6 @@ public interface LoginComponent {
     }
 
     static UserToken getUserToken() {
-        Object obj = GlobalRedisManager.get(Objects.requireNonNull(SessionUtils.getRequest()).getHeader(Constants.HTTP_HEADER_AUTHORIZATION));
-        return (UserToken) obj;
+        return CastUtils.cast(ContextHolder.getItem(Constants.SESSION_CURRENT_USER));
     }
 }

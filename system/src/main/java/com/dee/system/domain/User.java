@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 @EqualsAndHashCode(callSuper = true) //生成equals/hashCode方法时包含其父类的属性
 @Data
@@ -13,6 +14,7 @@ import lombok.NoArgsConstructor;
 @Table(name = "system_user")
 @NoArgsConstructor
 @AllArgsConstructor
+@EntityListeners(AuditingEntityListener.class)
 public class User extends BaseGlobalDomain {
 
     private String name;
