@@ -1,4 +1,4 @@
-package com.dee.basekit.mvc.domain;
+package com.dee.basekit.mvc.login;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 

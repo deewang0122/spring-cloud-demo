@@ -5,7 +5,7 @@ import jakarta.validation.constraints.NotEmpty;
 import lombok.Data;
 
 @Data
-public class UserSaveParam {
+public class SaveUserParam {
     @NotEmpty(message = "用户名称不能为空！")
     String name;
     @NotEmpty(message = "用户编码不能为空！")

@@ -1,7 +1,8 @@
 package com.dee.basekit.config;
 
+import com.dee.basekit.config.ContextHolder;
 import com.dee.basekit.constant.Constants;
-import com.dee.basekit.mvc.domain.UserToken;
+import com.dee.basekit.mvc.login.UserToken;
 import org.springframework.data.util.CastUtils;
 
 /**

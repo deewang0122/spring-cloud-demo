@@ -16,14 +16,16 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 @AllArgsConstructor
 @EntityListeners(AuditingEntityListener.class)
 public class User extends BaseGlobalDomain {
-
+    /**
+     * 用户名称
+     */
     private String name;
 
     private String code;
 
-    private String password;
-
     private String email;
+
+    private String password;
 
     private Integer status;
 

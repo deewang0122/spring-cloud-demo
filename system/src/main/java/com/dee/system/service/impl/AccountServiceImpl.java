@@ -1,7 +1,7 @@
 package com.dee.system.service.impl;
 
 import com.dee.basekit.config.GlobalRedisManager;
-import com.dee.basekit.mvc.domain.UserToken;
+import com.dee.basekit.mvc.login.UserToken;
 import com.dee.basekit.mvc.param.Result;
 import com.dee.basekit.util.BcryptUtils;
 import com.dee.system.domain.Account;
@@ -34,7 +34,7 @@ public class AccountServiceImpl extends BaseGlobalServiceImpl<Account> implement
             return Result.fail("User does not exist");
         }
         if (!loginParam.getPassword().equals(account.getUser().getPassword())) {
-            return Result.fail("password is error");
+            return Result.fail("Password is error");
         }
         String token = doToken(account.getUser());
         GlobalRedisManager.setAndExpire(token, doUserToken(account.getUser()), EXPIRE_TIME);

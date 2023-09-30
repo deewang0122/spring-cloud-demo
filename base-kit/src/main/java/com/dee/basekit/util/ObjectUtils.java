@@ -24,8 +24,9 @@ public class ObjectUtils {
         return target;
     }
 
+    @SuppressWarnings("CallToPrintStackTrace")
     public static <K, V> List<V> copyObject(List<K> sourceList, Class<V> targetClass) {
-        List<V> targetList = Collections.emptyList();
+        List<V> targetList = new java.util.ArrayList<>(Collections.emptyList());
         sourceList.forEach(source -> {
             try {
                 targetList.add(copyObject(source, targetClass.getDeclaredConstructor().newInstance()));

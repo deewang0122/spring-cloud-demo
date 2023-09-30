@@ -1,5 +1,16 @@
 # spring-cloud-demo
 
+### 技术架构
+~~~
+SpringCloud2022.0.4 + SpringBoot3.1.3 + WebFlux + Gateway + Nacos + Redis + Mysql + Jdk17 + Maven + Docker
+~~~
+
+### 业务架构
+~~~
+ 目的：完成基本业务架构设计：登录、基础权限管理、新服务接入基础功能开发
+ 目标：业务拿来即用的效果
+~~~
+
 ### 本地环境预制
 
 #### 安装Docker
@@ -28,4 +39,34 @@
 ~~~
 1. 下载镜像：docker pull nacos/nacos-server
 2. 安装运行：docker run -d --name nacos --env PREFER_HOST_MODE=hostname --env MODE=standalone -p 8848:8848 -p 9848:9848 -p 9849:9849 nacos/nacos-server:latest
+~~~
+
+#### Gateway
+~~~
+1. 通过gateway网关访问子应用
+2. Gateway完成登录认证鉴权
+~~~
+
+#### Learning
+~~~
+1. Httpexchange异步方式调用其它服务-未完成
+~~~
+
+#### System
+~~~
+1. Nacos配置动态修改获取
+2. Jpa自动填充创建人、修改人
+3. Webflux模式下获取当前登录用户会话信息
+4. 一次Http请求完成之后，ThreadLocal销毁当前会话信息-未完成
+~~~
+
+#### base-kit
+~~~
+1. 封装过滤器：Gateway、Filter
+2. 封装Redis
+3. 封装Context
+4. 封装Jpa
+5. 封装Login
+6. 封装Mvc
+7. 公共工具类
 ~~~

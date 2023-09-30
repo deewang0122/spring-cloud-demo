@@ -4,7 +4,7 @@ import com.dee.basekit.config.ContextHolder;
 import com.dee.basekit.config.GlobalRedisManager;
 import com.dee.basekit.config.HttpContextHolder;
 import com.dee.basekit.constant.Constants;
-import com.dee.basekit.mvc.domain.UserToken;
+import com.dee.basekit.mvc.login.UserToken;
 import com.dee.basekit.util.ObjectUtils;
 import lombok.val;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnWebApplication;

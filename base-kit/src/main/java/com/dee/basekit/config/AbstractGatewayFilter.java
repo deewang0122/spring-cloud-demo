@@ -1,7 +1,7 @@
 package com.dee.basekit.config;
 
 import com.dee.basekit.constant.Constants;
-import com.dee.basekit.mvc.domain.UserToken;
+import com.dee.basekit.mvc.login.UserToken;
 import com.dee.basekit.util.BcryptUtils;
 import lombok.extern.slf4j.Slf4j;
 import lombok.val;
@@ -46,9 +46,12 @@ public abstract class AbstractGatewayFilter extends AbstractFilter implements Gl
     }
 
     private boolean verifyToken(String authorization) {
-        val object = GlobalRedisManager.get(authorization);
         UserToken userToken = CastUtils.cast(GlobalRedisManager.get(authorization));
-        return BcryptUtils.matches(userToken.getUserId() + userToken.getUserName(), authorization);
+        return BcryptUtils.matches(initUserTokenKey(userToken), authorization);
+    }
+
+    private String initUserTokenKey(UserToken userToken) {
+        return userToken.getUserId() + userToken.getUserName();
     }
 
     private String getAuthorization(ServerHttpRequest request) {
