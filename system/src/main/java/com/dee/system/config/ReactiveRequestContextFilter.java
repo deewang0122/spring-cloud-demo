@@ -36,7 +36,10 @@ public class ReactiveRequestContextFilter implements WebFilter {
         ServerHttpResponse serverHttpResponse = serverWebExchange.getResponse();
         HttpContextHolder.setItem(Constants.SESSION_CURRENT_RESPONSE, serverHttpResponse);
 
-        return webFilterChain.filter(serverWebExchange);
+        return webFilterChain.filter(serverWebExchange).doFinally(exchange -> {
+            ContextHolder.clear();
+            HttpContextHolder.clear();
+        });
     }
 
 }

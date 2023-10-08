@@ -45,4 +45,10 @@ public class UserController  extends BaseController {
         return Result.success(userService.findAll());
     }
 
+    @GetMapping(value = "findAll2")
+    public Result<List<UserResult>> findAll2() {
+        int i = 4/0;
+        return Result.success();
+    }
+
 }

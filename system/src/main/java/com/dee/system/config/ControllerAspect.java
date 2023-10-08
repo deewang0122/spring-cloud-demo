@@ -14,14 +14,15 @@ import org.springframework.stereotype.Component;
 @Aspect
 @Component
 @Slf4j
+@Deprecated(since = "20231008")
 public class ControllerAspect {
 
-    @Pointcut("execution(public * com.dee.wang.controller.*Controller.*(..))")
+    @Pointcut("execution(* com.dee.wang.controller.*.*(..))")
     public void pointCut1() {
 
     }
 
-    @Pointcut("@annotation(org.springframework.web.bind.annotation.RequestMapping)")
+    @Pointcut("@annotation(org.springframework.web.bind.annotation.GetMapping)")
     public void pointCut() {
 
     }
@@ -29,6 +30,7 @@ public class ControllerAspect {
     @After("pointCut() && pointCut1()")
     public void doAfter() {
         log.info("doAfter.........");
+        System.out.println("oooooooooooooooooooooooooooooooooooooooooooooooooo");
         ContextHolder.clear();
         HttpContextHolder.clear();
     }
