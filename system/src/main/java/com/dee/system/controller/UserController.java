@@ -3,6 +3,7 @@ package com.dee.system.controller;
 import com.dee.basekit.mvc.controller.BaseController;
 import com.dee.basekit.mvc.param.Result;
 import com.dee.system.domain.User;
+import com.dee.system.exception.SystemException;
 import com.dee.system.param.EditUserParam;
 import com.dee.system.param.UserResult;
 import com.dee.system.param.SaveUserParam;
@@ -42,7 +43,8 @@ public class UserController  extends BaseController {
 
     @GetMapping(value = "findAll")
     public Result<List<UserResult>> findAll() {
-        return Result.success(userService.findAll());
+        throw new SystemException("this ia a test error");
+        //return Result.success(userService.findAll());
     }
 
     @GetMapping(value = "findAll2")

@@ -32,6 +32,10 @@ public class Result<T> {
         return new Result<>(FAIL_CODE, message, null);
     }
 
+    public static <T> Result<T> fail(Throwable cause) {
+        return new Result<>(FAIL_CODE, cause.getLocalizedMessage(), null);
+    }
+
     public Result(Integer code, String message, T data) {
         this.code = code;
         this.message = message;
