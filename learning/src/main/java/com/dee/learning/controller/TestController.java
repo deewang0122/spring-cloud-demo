@@ -2,13 +2,16 @@ package com.dee.learning.controller;
 
 import com.dee.basekit.mvc.param.Result;
 import com.dee.basekit.util.ObjectUtils;
-import com.dee.learning.client.ITestService;
+import com.dee.basekit.util.WebClientUtils;
+import com.dee.learning.client.CompletableFutureClient;
+import com.dee.learning.client.ISystemService;
 import lombok.extern.slf4j.Slf4j;
 import lombok.val;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Mono;
 
 @RestController
@@ -16,7 +19,11 @@ import reactor.core.publisher.Mono;
 @Slf4j
 public class TestController {
     @Autowired
-    private ITestService iTestService;
+    private ISystemService iTestService;
+
+    @Autowired
+    CompletableFutureClient completableFutureClient;
+
 
     @GetMapping("/test")
     public Result<String> test(String name) {
@@ -25,13 +32,15 @@ public class TestController {
 
     @GetMapping("/feign")
     public Result<String> feign(String name) {
-        return Result.success("feign 地址 : " + iTestService.test());
+        return completableFutureClient.test("testKey");
     }
 
     @GetMapping("/feign1")
-    public Mono<Result<String>> feign1(String name) {
-//        return Result.success("feign 地址 : " + iTestService.test1(name));
-        return Mono.just(iTestService.test1(name));
+    public Result<String> feign1(String name) {
+        WebClient client = WebClient.create("http://127.0.0.1:8030/system");
+        Result<String> result = WebClientUtils.syncGetMono(client, "/demo/test1", Result.class);
+
+        return Result.success(result.getData());
     }
 
 

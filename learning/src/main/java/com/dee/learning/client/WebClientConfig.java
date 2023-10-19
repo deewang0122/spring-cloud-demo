@@ -6,14 +6,18 @@ import org.springframework.web.reactive.function.client.WebClient;
 import org.springframework.web.reactive.function.client.support.WebClientAdapter;
 import org.springframework.web.service.invoker.HttpServiceProxyFactory;
 
+import java.time.Duration;
+
 @Configuration
 public class WebClientConfig {
 
     @Bean
-    ITestService iTestService() {
-        HttpServiceProxyFactory httpServiceProxyFactory = HttpServiceProxyFactory
-                .builder(WebClientAdapter.forClient(WebClient.builder().baseUrl("http://127.0.0.1:8031/").build()))
+    ISystemService iSystemService() {
+        HttpServiceProxyFactory proxyFactory = HttpServiceProxyFactory
+                .builder(WebClientAdapter.forClient(WebClient.builder().baseUrl("http://127.0.0.1:8030/system").build()))
+                .blockTimeout(Duration.ofSeconds(60))
                 .build();
-        return httpServiceProxyFactory.createClient(ITestService.class);
+
+        return proxyFactory.createClient(ISystemService.class);
     }
 }
