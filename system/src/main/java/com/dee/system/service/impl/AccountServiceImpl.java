@@ -37,14 +37,14 @@ public class AccountServiceImpl extends BaseGlobalServiceImpl<Account> implement
             return Result.fail("Password is error");
         }
         String token = doToken(account.getUser());
-        GlobalRedisManager.setAndExpire(token, doUserToken(account.getUser()), EXPIRE_TIME);
+        GlobalRedisManager.setAndExpire(token, doUserTokenValue(account.getUser()), EXPIRE_TIME);
 
         LoginResult loginResult = new LoginResult();
         loginResult.setToken(token);
         return Result.success(loginResult);
     }
 
-    private UserToken doUserToken(User user) {
+    private UserToken doUserTokenValue(User user) {
         UserToken userToken = new UserToken();
         userToken.setId(user.getId());
         userToken.setName(user.getName());

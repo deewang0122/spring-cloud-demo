@@ -1,4 +1,4 @@
-package com.dee.system.config;
+package com.dee.learning.config;
 
 import com.dee.basekit.config.ContextHolder;
 import com.dee.basekit.config.GlobalRedisManager;
@@ -8,9 +8,7 @@ import com.dee.basekit.mvc.login.UserToken;
 import com.dee.basekit.util.ObjectUtils;
 import lombok.extern.slf4j.Slf4j;
 import lombok.val;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnWebApplication;
-import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.server.reactive.ServerHttpRequest;
 import org.springframework.http.server.reactive.ServerHttpResponse;
@@ -22,19 +20,11 @@ import reactor.core.publisher.Mono;
 @Slf4j
 @Configuration
 @ConditionalOnWebApplication(type = ConditionalOnWebApplication.Type.REACTIVE)
-@EnableConfigurationProperties({WhitelistFilterProperties.class})
 public class ReactiveRequestContextFilter implements WebFilter {
-    @Autowired
-    WhitelistFilterProperties whitelistFilterProperties;
 
     @SuppressWarnings("NullableProblems")
     @Override
     public Mono<Void> filter(ServerWebExchange serverWebExchange, WebFilterChain webFilterChain) {
-        // 白名单
-        if (verifyWhitelist(serverWebExchange.getRequest().getPath().toString())) {
-            return webFilterChain.filter(serverWebExchange);
-        }
-
         // 获取Request
         ServerHttpRequest serverHttpRequest = serverWebExchange.getRequest();
         // 获取Token, 默认从Gateway访问，默认认证通过
@@ -55,8 +45,6 @@ public class ReactiveRequestContextFilter implements WebFilter {
         });
     }
 
-    protected boolean verifyWhitelist(String requestPath) {
-        return whitelistFilterProperties.getAllowPaths().contains(requestPath);
-    }
+
 
 }

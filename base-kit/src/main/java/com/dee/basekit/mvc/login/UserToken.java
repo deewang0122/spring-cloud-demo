@@ -1,12 +1,15 @@
 package com.dee.basekit.mvc.login;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import lombok.Data;
+import lombok.*;
 
-import java.util.Map;
+import java.io.Serializable;
 
 @Data
-public class UserToken implements IUserToken {
+@NoArgsConstructor
+@AllArgsConstructor
+@Getter
+@Setter
+public class UserToken implements IUserToken, Serializable {
     /**
      * 用户ID
      */
@@ -18,7 +21,7 @@ public class UserToken implements IUserToken {
     /**
      * 附件属性
      */
-    private Map<String, ObjectMapper> extProperties;
+    //private Map<String, ObjectMapper> extProperties;
 
     @Override
     public String getUserId() {
@@ -30,14 +33,14 @@ public class UserToken implements IUserToken {
         return this.getName();
     }
 
-    @Override
-    public ObjectMapper getExtProperty(String key) {
-        return this.getExtProperties() != null ? this.getExtProperties().get(key) : null;
-    }
-
-    @Override
-    public ObjectMapper getExtProperty(String key, ObjectMapper defaultValue) {
-        return (this.getExtProperties() != null) ? this.getExtProperties().get(key) : defaultValue;
-    }
+//    @Override
+//    public ObjectMapper getExtProperty(String key) {
+//        return this.getExtProperties() != null ? this.getExtProperties().get(key) : null;
+//    }
+//
+//    @Override
+//    public ObjectMapper getExtProperty(String key, ObjectMapper defaultValue) {
+//        return (this.getExtProperties() != null) ? this.getExtProperties().get(key) : defaultValue;
+//    }
 
 }

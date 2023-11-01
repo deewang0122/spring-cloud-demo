@@ -14,6 +14,7 @@ public class TestController {
 
     @GetMapping("/test")
     public Result<String> test() {
+        // 跨服务调用测试
         String name = String.valueOf(System.currentTimeMillis());
         String value = GlobalRedisManager.get("testKey").toString();
         return Result.success("test 地址 : " + name + "testKey = " + value);

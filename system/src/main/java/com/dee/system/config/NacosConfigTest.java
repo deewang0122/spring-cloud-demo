@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping(value = "/config")
 public class NacosConfigTest {
 
+    // nacos 配置自动更新
     @Value(value = "${server_test.port_test:}")
     private String testKey;
 

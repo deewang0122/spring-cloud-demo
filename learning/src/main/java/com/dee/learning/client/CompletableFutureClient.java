@@ -13,7 +13,7 @@ public class CompletableFutureClient {
     @SuppressWarnings("unchecked")
     public Result<String> test(String token){
         CompletableFuture<Object> completableFuture = CompletableFuture.supplyAsync(() -> {
-            return systemService.test("testKey");
+            return systemService.test(token);
         });
         try {
             return (Result<String>) completableFuture.get();

@@ -19,6 +19,11 @@ import reactor.core.publisher.Mono;
 public abstract class AbstractGatewayFilter extends AbstractFilter implements GlobalFilter, Ordered {
     @Override
     public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
+        // 检查白名单
+        if (verifyWhitelist(exchange.getRequest().getPath().toString())) {
+            return chain.filter(exchange);
+        }
+
         val authorization = getAuthorization(exchange.getRequest());
         // 1. 检查认证信息存在
         if (!StringUtils.hasText(authorization)) {
@@ -41,12 +46,17 @@ public abstract class AbstractGatewayFilter extends AbstractFilter implements Gl
         return chain.filter(exchange);
     }
 
+    protected boolean verifyWhitelist(String requestPath) {
+        return false;
+    }
+
     private void refreshToken(String authorization) {
         GlobalRedisManager.expire(authorization, getExpireTime());
     }
 
     private boolean verifyToken(String authorization) {
-        UserToken userToken = CastUtils.cast(GlobalRedisManager.get(authorization));
+        Object object = GlobalRedisManager.get(authorization);
+        UserToken userToken = CastUtils.cast(object);
         return BcryptUtils.matches(initUserTokenKey(userToken), authorization);
     }
 

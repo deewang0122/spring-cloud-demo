@@ -1,4 +1,4 @@
-package com.dee.system.config;
+package com.dee.learning.config;
 
 import com.dee.basekit.config.AbstractJpaAuditorConfiguration;
 import lombok.extern.slf4j.Slf4j;
