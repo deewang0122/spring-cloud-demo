@@ -7,8 +7,18 @@ import org.springframework.beans.BeanUtils;
 import java.util.Collections;
 import java.util.List;
 
+/**
+ * Object 工具类
+ *
+ * @author Dee
+ */
 public class ObjectUtils {
-
+    /**
+     * Object 转Json 字符串
+     *
+     * @param obj Object对象
+     * @return string
+     */
     public static String toJson(Object obj) {
         ObjectMapper objectMapper = new ObjectMapper();
         try {
