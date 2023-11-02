@@ -23,6 +23,6 @@ public interface LoginComponent {
     }
 
     static UserToken getUserToken() {
-        return CastUtils.cast(ContextHolder.getItem(Constants.SESSION_CURRENT_USER));
+        return CastUtils.cast(HttpContextHolder.getItem(Constants.SESSION_CURRENT_USER_TOKEN));
     }
 }

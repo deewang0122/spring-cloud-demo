@@ -1,6 +1,5 @@
 package com.dee.system.config;
 
-import com.dee.basekit.config.ContextHolder;
 import com.dee.basekit.config.HttpContextHolder;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.annotation.After;
@@ -31,7 +30,6 @@ public class ControllerAspect {
     public void doAfter() {
         log.info("doAfter.........");
         System.out.println("oooooooooooooooooooooooooooooooooooooooooooooooooo");
-        ContextHolder.clear();
         HttpContextHolder.clear();
     }
 }

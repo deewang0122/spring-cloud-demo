@@ -1,6 +1,5 @@
 package com.dee.learning.config;
 
-import com.dee.basekit.config.ContextHolder;
 import com.dee.basekit.config.GlobalRedisManager;
 import com.dee.basekit.config.HttpContextHolder;
 import com.dee.basekit.constant.Constants;
@@ -32,7 +31,7 @@ public class ReactiveRequestContextFilter implements WebFilter {
         // 查询用户信息
         UserToken userToken = ObjectUtils.copyObject(GlobalRedisManager.get(authorization), new UserToken());
         // 存放当前用户信息
-        ContextHolder.setItem(Constants.SESSION_CURRENT_USER, userToken);
+        HttpContextHolder.setItem(Constants.SESSION_CURRENT_USER_TOKEN, userToken);
         // 存放HttpRequest
         HttpContextHolder.setItem(Constants.SESSION_CURRENT_REQUEST, serverHttpRequest);
         // 存放HttpResponse
@@ -40,7 +39,6 @@ public class ReactiveRequestContextFilter implements WebFilter {
         HttpContextHolder.setItem(Constants.SESSION_CURRENT_RESPONSE, serverHttpResponse);
 
         return webFilterChain.filter(serverWebExchange).doFinally(exchange -> {
-            ContextHolder.clear();
             HttpContextHolder.clear();
         });
     }

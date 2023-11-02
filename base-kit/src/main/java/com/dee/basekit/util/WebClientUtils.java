@@ -4,6 +4,7 @@ import org.springframework.web.reactive.function.client.WebClient;
 
 import java.util.Collection;
 
+@Deprecated
 public class WebClientUtils {
 
     public static <T> T syncGetMono(WebClient webClient, String url, Class<T> resClass) {

@@ -5,6 +5,7 @@ import com.dee.basekit.constant.Constants;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
+@Deprecated
 public class SessionUtils {
     public static HttpServletRequest getRequest() {
         return (HttpServletRequest) HttpContextHolder.getItem(Constants.SESSION_CURRENT_REQUEST);

@@ -1,8 +1,10 @@
 package com.dee.basekit.mvc.login;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.*;
 
 import java.io.Serializable;
+import java.util.Map;
 
 @Data
 @NoArgsConstructor
@@ -21,7 +23,7 @@ public class UserToken implements IUserToken, Serializable {
     /**
      * 附件属性
      */
-    //private Map<String, ObjectMapper> extProperties;
+    private Map<String, Object> extProperties;
 
     @Override
     public String getUserId() {
@@ -33,14 +35,14 @@ public class UserToken implements IUserToken, Serializable {
         return this.getName();
     }
 
-//    @Override
-//    public ObjectMapper getExtProperty(String key) {
-//        return this.getExtProperties() != null ? this.getExtProperties().get(key) : null;
-//    }
-//
-//    @Override
-//    public ObjectMapper getExtProperty(String key, ObjectMapper defaultValue) {
-//        return (this.getExtProperties() != null) ? this.getExtProperties().get(key) : defaultValue;
-//    }
+    @Override
+    public Object getExtProperty(String key) {
+        return this.getExtProperties() != null ? this.getExtProperties().get(key) : null;
+    }
+
+    @Override
+    public Object getExtProperty(String key, ObjectMapper defaultValue) {
+        return (this.getExtProperties() != null) ? this.getExtProperties().get(key) : defaultValue;
+    }
 
 }

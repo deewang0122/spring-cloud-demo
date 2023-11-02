@@ -14,7 +14,7 @@ public final class Constants {
     /**
      * 当前用户会话标识
      */
-    public static final String SESSION_CURRENT_USER = "currentUser";
+    public static final String SESSION_CURRENT_USER_TOKEN = "currentUser";
     /**
      * 当前用户会话标识
      */
