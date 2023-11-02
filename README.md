@@ -49,7 +49,7 @@ SpringCloud2022.0.4 + SpringBoot3.1.3 + WebFlux + Gateway + Nacos + Redis + Mysq
 
 #### Learning
 ~~~
-1. Httpexchange异步方式调用其它服务-未完成
+1. Httpexchange异步方式调用其它服务
 ~~~
 
 #### System
@@ -57,7 +57,7 @@ SpringCloud2022.0.4 + SpringBoot3.1.3 + WebFlux + Gateway + Nacos + Redis + Mysq
 1. Nacos配置动态修改获取
 2. Jpa自动填充创建人、修改人
 3. Webflux模式下获取当前登录用户会话信息
-4. 一次Http请求完成之后，ThreadLocal销毁当前会话信息-未完成
+4. 一次Http请求完成之后，ThreadLocal销毁当前会话信息
 ~~~
 
 #### base-kit
@@ -68,5 +68,6 @@ SpringCloud2022.0.4 + SpringBoot3.1.3 + WebFlux + Gateway + Nacos + Redis + Mysq
 4. 封装Jpa
 5. 封装Login
 6. 封装Mvc
-7. 公共工具类
+7. 公共工具类: ObjectUtils, CommonUtils, 
+8. 封装UserToken
 ~~~
