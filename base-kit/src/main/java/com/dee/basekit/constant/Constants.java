@@ -27,4 +27,12 @@ public final class Constants {
      * HttpServerRequest
      */
     public static final Class<ServerHttpRequest> SERVER_HTTP_REQUEST_CLASS = ServerHttpRequest.class;
+    /**
+     * Gateway request header key
+     */
+    public static final String GATEWAY_REQUEST_HEADER_KEY = "gateway-request-header-key";
+    /**
+     * Gateway request header value
+     */
+    public static final String GATEWAY_REQUEST_HEADER_VALUE = "gateway-request-header-value";
 }

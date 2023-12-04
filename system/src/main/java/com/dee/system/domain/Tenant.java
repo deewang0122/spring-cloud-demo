@@ -12,40 +12,33 @@ import lombok.NoArgsConstructor;
 import org.hibernate.annotations.Comment;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
-@EqualsAndHashCode(callSuper = true) //生成equals/hashCode方法时包含其父类的属性
+@EqualsAndHashCode(callSuper = true) // 生成equals/hashCode方法时包含其父类的属性
 @Data
 @Entity
-@Table(name = "system_user")
+@Table(name = "system_tenant")
 @NoArgsConstructor
 @AllArgsConstructor
 @EntityListeners(AuditingEntityListener.class)
-@Comment("用户信息表")
-public class User extends BaseGlobalDomain {
-    /**
-     * 用户名称
-     */
+@Comment("租户信息表")
+public class Tenant extends BaseGlobalDomain {
+
     @Column(nullable = false)
-    @Comment("姓名")
+    @Comment("租户名称")
     private String name;
 
-    @Column(nullable = false, unique = true)
-    @Comment("用户编码")
-    private String code;
-
-    @Column(unique = true)
-    @Comment("用户邮箱")
-    private String email;
+    @Column(nullable = false)
+    @Comment("租户类型")
+    private String type;
 
     @Column(nullable = false)
-    @Comment("用户密码")
-    private String password;
+    @Comment("租户状态")
+    private String status;
+
+    @Comment("租户父级Id")
+    private String parentId = "-1";
 
     @Column(nullable = false)
-    @Comment("用户状态")
-    private Integer status;
-
-    @Column(name = "remark", length = 1024)
-    @Comment("备注信息")
+    @Comment("租户备注")
     private String remark;
 
 }

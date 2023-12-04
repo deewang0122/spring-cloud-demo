@@ -28,8 +28,8 @@ spring:
           uri: lb://learning
           predicates:
             - Path=/learning/**
-  #      default-filters:
-#        - AddRequestHeader=gateway-system, gateway-system
+      default-filters:
+        - AddRequestHeader=gateway-request-header-key, gateway-request-header-value
 
   config:
     import: optional:nacos:${spring.application.name}-${spring.profiles.active}.${spring.cloud.nacos.config.file-extension}

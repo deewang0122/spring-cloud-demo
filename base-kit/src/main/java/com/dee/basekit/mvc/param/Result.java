@@ -10,8 +10,8 @@ import lombok.ToString;
 public class Result<T> {
     private static final Integer SUCCESS_CODE = 1;
     private static final Integer FAIL_CODE = 0;
-    private static final String SUCCESS_MESSAGE = "success";
-    private static final String FAIL_MESSAGE = "fail";
+    private static final String SUCCESS_MESSAGE = "Success";
+    private static final String FAIL_MESSAGE = "Fail";
     private Integer code;
     private String message;
     private T data;

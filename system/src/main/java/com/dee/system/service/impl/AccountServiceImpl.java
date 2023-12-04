@@ -36,11 +36,11 @@ public class AccountServiceImpl extends BaseGlobalServiceImpl<Account> implement
         if (!loginParam.getPassword().equals(account.getUser().getPassword())) {
             return Result.fail("Password is error");
         }
-        String token = doToken(account.getUser());
-        GlobalRedisManager.setAndExpire(token, doUserTokenValue(account.getUser()), EXPIRE_TIME);
+        String tokenKey = doTokenKey(account.getUser());
+        GlobalRedisManager.setAndExpire(tokenKey, doUserTokenValue(account.getUser()), EXPIRE_TIME);
 
         LoginResult loginResult = new LoginResult();
-        loginResult.setToken(token);
+        loginResult.setToken(tokenKey);
         return Result.success(loginResult);
     }
 
@@ -51,7 +51,7 @@ public class AccountServiceImpl extends BaseGlobalServiceImpl<Account> implement
         return userToken;
     }
 
-    private String doToken(User user) {
+    private String doTokenKey(User user) {
         return BcryptUtils.encode(user.getId() + user.getName());
     }
 
