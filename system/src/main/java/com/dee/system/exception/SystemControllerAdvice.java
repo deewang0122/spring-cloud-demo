@@ -1,4 +1,4 @@
-package com.dee.system.config;
+package com.dee.system.exception;
 
 import com.dee.basekit.exception.BaseControllerAdvice;
 import org.springframework.web.bind.annotation.ControllerAdvice;

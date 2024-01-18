@@ -8,6 +8,9 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
+/**
+ * 全局异常基类
+ */
 public abstract class BaseControllerAdvice {
     private static final Logger logger = LoggerFactory.getLogger(BaseControllerAdvice.class);
 
