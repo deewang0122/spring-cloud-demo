@@ -1,7 +1,7 @@
 package com.dee.learning.controller;
 
 import com.dee.basekit.config.LoginComponent;
-import com.dee.basekit.mvc.param.Result;
+import com.dee.basekit.mvc.result.Result;
 import com.dee.learning.client.CompletableFutureClient;
 import com.dee.learning.client.ISystemService;
 import lombok.extern.slf4j.Slf4j;

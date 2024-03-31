@@ -22,6 +22,14 @@ public abstract class LoginComponent {
         return getUserToken().getUserName();
     }
 
+    public static String getTenantId() {
+        return getUserToken().getTenantId();
+    }
+
+    public static String getTenantName() {
+        return getUserToken().getTenantName();
+    }
+
     public static UserToken getUserToken() {
         return CastUtils.cast(HttpContextHolder.getItem(Constants.SESSION_CURRENT_USER_TOKEN));
     }

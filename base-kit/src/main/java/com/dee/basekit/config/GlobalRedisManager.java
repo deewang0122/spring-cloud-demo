@@ -25,6 +25,11 @@ public class GlobalRedisManager {
         return true;
     }
 
+    public static Boolean delete(String key) {
+        redisTemplate.delete(key);
+        return true;
+    }
+
     public static Object setAndExpire(String key, Object value, Long expireTime) {
         // TODO...2023/9/11: 待优化
         redisTemplate.opsForValue().set(key, value, expireTime, TimeUnit.SECONDS);

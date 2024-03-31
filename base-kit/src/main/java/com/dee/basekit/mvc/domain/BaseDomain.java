@@ -1,4 +1,6 @@
 package com.dee.basekit.mvc.domain;
 
-public abstract class BaseDomain {
+import java.io.Serializable;
+
+public abstract class BaseDomain implements Serializable {
 }

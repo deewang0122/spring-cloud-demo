@@ -1,6 +1,6 @@
 package com.dee.learning.client;
 
-import com.dee.basekit.mvc.param.Result;
+import com.dee.basekit.mvc.result.Result;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.service.annotation.GetExchange;

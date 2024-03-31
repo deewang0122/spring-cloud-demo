@@ -5,6 +5,7 @@ import lombok.*;
 
 import java.io.Serializable;
 import java.util.Map;
+import java.util.Objects;
 
 @Data
 @NoArgsConstructor
@@ -21,7 +22,19 @@ public class UserToken implements IUserToken, Serializable {
      */
     private String name;
     /**
-     * 附件属性
+     * 租户Id
+     */
+    private String tenantId;
+    /**
+     * 租户名称
+     */
+    private String tenantName;
+    /**
+     * 是否管理员
+     */
+    private Integer isAdmin;
+    /**
+     * 附加属性
      */
     private Map<String, Object> extProperties;
 
@@ -33,6 +46,11 @@ public class UserToken implements IUserToken, Serializable {
     @Override
     public String getUserName() {
         return this.getName();
+    }
+
+    @Override
+    public boolean isAdmin() {
+        return Objects.nonNull(this.isAdmin) && 1 == this.isAdmin;
     }
 
     @Override

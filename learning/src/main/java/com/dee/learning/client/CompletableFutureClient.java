@@ -1,6 +1,6 @@
 package com.dee.learning.client;
 
-import com.dee.basekit.mvc.param.Result;
+import com.dee.basekit.mvc.result.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

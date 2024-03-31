@@ -15,6 +15,12 @@ public interface IUserToken {
 
     String getUserName();
 
+    String getTenantId();
+
+    String getTenantName();
+
+    boolean isAdmin();
+
     Object getExtProperty(String key);
 
     Object getExtProperty(String key, ObjectMapper defaultValue);

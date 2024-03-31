@@ -1,5 +1,3 @@
-server:
-  port: 8030
 spring:
   cloud:
     nacos:
@@ -20,10 +18,10 @@ spring:
           enabled: true
           lower-case-service-id: true
       routes:
-        - id: system
-          uri: lb://system
+        - id: system-service
+          uri: lb://system-service
           predicates:
-            - Path=/system/**,/login
+            - Path=/system-service/**,/login
         - id: learning
           uri: lb://learning
           predicates:

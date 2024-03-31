@@ -24,7 +24,7 @@
 
     <modules>
         <module>base-kit</module>
-        <module>system</module>
+        <module>system-service</module>
         <module>gateway</module>
         <module>learning</module>
     </modules>
@@ -94,12 +94,7 @@
             <artifactId>spring-boot-starter-webflux</artifactId>
         </dependency>
 
-        <!-- https://mvnrepository.com/artifact/com.baomidou/mybatis-plus-boot-starter -->
-        <dependency>
-            <groupId>com.baomidou</groupId>
-            <artifactId>mybatis-plus-boot-starter</artifactId>
-            <version>3.5.4.1</version>
-        </dependency>
+
 
 
         <dependency>
