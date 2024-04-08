@@ -18,10 +18,6 @@ public class MenuResult {
 
     private String icon;
 
-    private Integer isClick;
-
-    private Integer isCurrentPage = 1;
-
     private String remark;
 
     private List<MenuResult> children;

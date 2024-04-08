@@ -2,6 +2,7 @@ package com.dee.system.domain;
 
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
+import com.dee.system.enums.StatusEnum;
 import com.dee.system.enums.UserEnum;
 import com.dee.system.global.BaseGlobalDomain;
 import lombok.AllArgsConstructor;
@@ -34,7 +35,7 @@ public class UserDomain extends BaseGlobalDomain {
     private Integer type;
 
     @TableField("status")
-    private Integer status = UserEnum.STATUS_ENABLE.getKey();
+    private StatusEnum status;
 
     @TableField("remark")
     private String remark;

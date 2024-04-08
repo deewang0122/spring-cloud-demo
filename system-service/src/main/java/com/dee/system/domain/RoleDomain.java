@@ -2,6 +2,7 @@ package com.dee.system.domain;
 
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
+import com.dee.system.enums.StatusEnum;
 import com.dee.system.global.BaseGlobalDomain;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -18,7 +19,7 @@ public class RoleDomain extends BaseGlobalDomain {
     private String name;
 
     @TableField("status")
-    private Integer status = 1;
+    private StatusEnum status;
 
     @TableField("sort")
     private Integer sort = 1;

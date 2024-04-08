@@ -4,6 +4,7 @@ import com.dee.basekit.mvc.result.Result;
 import com.dee.system.param.MenuAddParam;
 import com.dee.system.param.MenuEditParam;
 import com.dee.system.param.MenuListPageParam;
+import com.dee.system.result.MenuListTreeResult;
 import com.dee.system.result.MenuResult;
 
 import java.util.List;
@@ -19,5 +20,5 @@ public interface IMenuService {
 
     Result<MenuResult> listPage(MenuListPageParam param);
 
-    Result<List<MenuResult>> listTree(String tenantId);
+    Result<List<MenuListTreeResult>> listTree(String tenantId, String userId);
 }

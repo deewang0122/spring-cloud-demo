@@ -25,7 +25,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ObjectUtils;
 
-import java.util.HashMap;
 import java.util.Map;
 
 import static com.dee.basekit.constant.Constants.EXPIRE_TIME;
@@ -81,7 +80,7 @@ public class AccountServiceImpl extends BaseGlobalServiceImpl<AccountDomain, Acc
         userToken.setTenantId(tenant.getId());
         userToken.setTenantName(tenant.getName());
 
-        userToken.setExtProperties(Map.of("menuList", menuService.listTree(tenant.getId()).getData()));
+        userToken.setExtProperties(Map.of("menuList", menuService.listTree(tenant.getId(), user.getId()).getData()));
         return userToken;
     }
 
