@@ -80,7 +80,6 @@ public class AccountServiceImpl extends BaseGlobalServiceImpl<AccountDomain, Acc
         userToken.setTenantId(tenant.getId());
         userToken.setTenantName(tenant.getName());
 
-        userToken.setExtProperties(Map.of("menuList", menuService.listTree(tenant.getId(), user.getId()).getData()));
         return userToken;
     }
 

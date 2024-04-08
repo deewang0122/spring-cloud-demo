@@ -32,10 +32,10 @@ public class UserDomain extends BaseGlobalDomain {
     private String password;
 
     @TableField("type")
-    private Integer type;
+    private UserEnum type = UserEnum.TYPE_DEFAULT;
 
     @TableField("status")
-    private StatusEnum status;
+    private StatusEnum status = StatusEnum.DEFAULT;
 
     @TableField("remark")
     private String remark;

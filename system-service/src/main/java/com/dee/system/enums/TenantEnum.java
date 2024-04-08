@@ -7,11 +7,10 @@ import lombok.Getter;
 
 @AllArgsConstructor
 @Getter
-public enum UserEnum {
-    TYPE_IN(1, "内部员工", "内部员工"),
-    TYPE_VISITOR(2, "游客/访客", "游客/访客"),
-    TYPE_OUT(3, "第三方员工", "第三方员工"),
-    TYPE_DEFAULT(1, "内部员工", "默认内部员工");
+public enum TenantEnum {
+    TYPE_IN(1, "内部组织", "内部组织"),
+    TYPE_OUT(3, "第三方组织", "第三方组织"),
+    TYPE_DEFAULT(1, "内部组织", "默认内部组织");
 
     @JsonValue
     @EnumValue
@@ -21,8 +20,8 @@ public enum UserEnum {
 
     private final String remark;
 
-    public static UserEnum instance(Integer key) {
-        for (UserEnum userEnum : UserEnum.values()) {
+    public static TenantEnum instance(Integer key) {
+        for (TenantEnum userEnum : TenantEnum.values()) {
             if (userEnum.key == key) {
                 return userEnum;
             }

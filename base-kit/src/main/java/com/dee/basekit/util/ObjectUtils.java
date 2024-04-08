@@ -1,5 +1,7 @@
 package com.dee.basekit.util;
 
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.dee.basekit.mvc.ITreeModel;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -47,6 +49,20 @@ public class ObjectUtils {
         });
 
         return targetList;
+    }
+
+    public static <K, V> IPage<V> copyObject(IPage<K> page, Class<V> targetClass) {
+        IPage<V> page1 = copyObject(page, new Page<>());
+        List<V> targetList = new java.util.ArrayList<>(Collections.emptyList());
+        page.getRecords().forEach(source -> {
+            try {
+                targetList.add(copyObject(source, targetClass.getDeclaredConstructor().newInstance()));
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        });
+        page1.setRecords(targetList);
+        return page1;
     }
 
     public static <T extends ITreeModel<T>> List<T> listToTree(List<T> listNode, String parentId) {

@@ -2,10 +2,12 @@ package com.dee.system.service;
 
 import com.dee.basekit.mvc.result.Result;
 import com.dee.system.domain.TenantDomain;
-import com.dee.system.param.RoleListPageParam;
 import com.dee.system.param.TenantAddParam;
 import com.dee.system.param.TenantEditParam;
+import com.dee.system.param.TenantListParam;
 import com.dee.system.result.TenantResult;
+
+import java.util.List;
 
 public interface ITenantService {
     TenantDomain selectByUserId(String userId);
@@ -17,5 +19,5 @@ public interface ITenantService {
 
     Result<TenantResult> get(String id);
 
-    Result<TenantResult> listPage(RoleListPageParam param);
+    Result<List<TenantResult>> list(TenantListParam param);
 }

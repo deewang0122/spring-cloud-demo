@@ -6,8 +6,12 @@ import com.dee.system.domain.UserDomain;
 import com.dee.system.param.UserEditParam;
 import com.dee.system.param.UserListPageParam;
 import com.dee.system.param.UserSaveParam;
+import com.dee.system.result.MenuListTreeResult;
+import com.dee.system.result.TenantResult;
 import com.dee.system.result.UserListPageResult;
 import com.dee.system.result.UserResult;
+
+import java.util.List;
 
 public interface IUserService {
     UserDomain selectById(String id);
@@ -21,4 +25,6 @@ public interface IUserService {
     Result delete(String id);
 
     Result<IPage<UserListPageResult>> listPage(UserListPageParam param);
+
+
 }

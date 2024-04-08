@@ -25,6 +25,6 @@ public class UserTenantDomain extends BaseGlobalDomain {
     private Integer isDefault;
 
     @TableField("status")
-    private StatusEnum status;
+    private StatusEnum status = StatusEnum.DEFAULT;
 
 }

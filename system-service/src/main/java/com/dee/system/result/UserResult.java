@@ -1,6 +1,5 @@
 package com.dee.system.result;
 
-import com.dee.system.enums.UserEnum;
 import lombok.Data;
 
 @Data
@@ -21,7 +20,4 @@ public class UserResult {
 
     private String isAdmin;
 
-    public String getStatusName() {
-        return UserEnum.instance(this.status).getValue();
-    }
 }
