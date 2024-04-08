@@ -1,11 +1,12 @@
 package com.dee.basekit.util;
 
+import com.dee.basekit.mvc.ITreeModel;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.BeanUtils;
 
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * Object 工具类
@@ -47,4 +48,35 @@ public class ObjectUtils {
 
         return targetList;
     }
-}
+
+    public static <T extends ITreeModel<T>> List<T> listToTree(List<T> listNode, String parentId) {
+        return listNode.stream()
+                .filter(parent -> parent.getParentId().equals(parentId))
+                .peek(child -> {
+                    child.setChildren(listToTree(listNode, child.getParentId()));
+                }).collect(Collectors.toList());
+    }
+
+    public static <T extends ITreeModel<T>> List<T> convertListToTree(List<T> nodeList) {
+        Map<String, T> nodeMap = new HashMap<>();
+        List<T> treeList = new ArrayList<>();
+
+        for (T node : nodeList) {
+            nodeMap.put(node.getId(), node);
+        }
+
+        for (T node : nodeList) {
+            T parent = nodeMap.get(node.getParentId());
+            if (parent != null) {
+                if (parent.getChildren() == null) {
+                    parent.setChildren(new ArrayList<>());
+                }
+                parent.getChildren().add(node);
+            } else {
+                treeList.add(node);
+            }
+        }
+        return treeList;
+    }
+
+    }

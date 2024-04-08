@@ -1,12 +1,13 @@
 package com.dee.basekit.mvc;
 
-public interface ITreeModel {
+import java.util.List;
 
-    String id();
+public interface ITreeModel<T> {
+    String getId();
 
-    String name();
+    String getParentId();
 
-    String parentId();
+    List<T> getChildren();
 
-    Integer type();
+    void setChildren(List<T> list);
 }
